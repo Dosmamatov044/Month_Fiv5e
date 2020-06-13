@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".onBoard.IntroActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +18,8 @@
             </intent-filter>
 
         </activity>
+
+
 
         <activity
             android:name=".MainActivity"
