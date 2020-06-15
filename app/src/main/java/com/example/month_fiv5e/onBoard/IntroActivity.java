@@ -1,8 +1,11 @@
 package com.example.month_fiv5e.onBoard;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.RelativeLayout;
 
 
 import androidx.annotation.NonNull;
@@ -25,7 +28,7 @@ public class IntroActivity extends AppCompatActivity {
     TabLayout tablayout;
     Button buttonSkip;
     Button buttonNext;
-
+RelativeLayout color;
 
 
     @Override
@@ -38,6 +41,7 @@ public class IntroActivity extends AppCompatActivity {
         tablayout = findViewById(R.id.tabLayout);
         tablayout.setupWithViewPager(viewPager, true);
         buttonSkip = findViewById(R.id.btn_skip);
+       color=(RelativeLayout) findViewById(R.id.color);
         buttonNext = findViewById(R.id.next);
         buttonSkip.setVisibility(View.VISIBLE);
         ViewPagerScrolling();
@@ -70,17 +74,18 @@ public class IntroActivity extends AppCompatActivity {
                         buttonNext.setVisibility(View.VISIBLE);
                         buttonNext.setText("NEXT");
 
+
                         break;
                     case 1:
                         buttonSkip.setVisibility(View.VISIBLE);
                         buttonNext.setVisibility(View.VISIBLE);
                         buttonNext.setText("NEXT");
-
+                        color.setBackgroundColor(Color.BLACK);
                         break;
                     case 2:
                         buttonNext.setText("Start");
                         buttonSkip.setVisibility(View.GONE);
-
+                        color.setBackgroundColor(Color.RED);
 
                 }
             }
