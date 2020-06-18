@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 android:id="@+id/color"
     android:background="#FFC107"
-    tools:context=".onBoard.IntroActivity">
+    tools:context=".presentation.intro.IntroActivity">
 
 
     <androidx.viewpager.widget.ViewPager
@@ -21,14 +21,14 @@ android:id="@+id/color"
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="7dp"
         android:layout_alignParentBottom="true"
         app:tabIndicator="@drawable/tab_indicator_selected"
         app:tabBackground="@drawable/tab_indicator_default"
         android:layout_centerHorizontal="true"
         app:tabIndicatorColor="#64D314"
-        app:tabMaxWidth="15dp"
-        android:layout_marginBottom="50dp"
+
+        android:layout_marginBottom="40dp"
         app:tabGravity="center" />
 
     <Button

@@ -1,14 +1,13 @@
-package com.example.month_fiv5e;
+package com.example.month_fiv5e.presentation.Main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.month_fiv5e.onBoard.IntroActivity;
-import com.example.month_fiv5e.onBoard.IntroFragment;
+import com.example.month_fiv5e.R;
+import com.example.month_fiv5e.presentation.intro.IntroActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -29,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (!isShown()) {
+            startActivity(new Intent(this, IntroActivity.class));
+            finish();
+            return;
 
+        }
         setContentView(R.layout.activity_main);
 
 
@@ -40,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -76,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         return sharedPreferences.getBoolean("isShown",false);
 
     }
+
+
 
 
 }

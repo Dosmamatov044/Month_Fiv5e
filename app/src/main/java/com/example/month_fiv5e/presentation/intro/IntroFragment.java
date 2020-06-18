@@ -1,23 +1,20 @@
-package com.example.month_fiv5e.onBoard;
+package com.example.month_fiv5e.presentation.intro;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.month_fiv5e.MainActivity;
 import com.example.month_fiv5e.R;
+
+import java.util.Objects;
 
 
 public class IntroFragment extends Fragment {
@@ -42,8 +39,6 @@ public class IntroFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_intro, container, false);
 
 
-
-
     }
 
 
@@ -53,9 +48,16 @@ public class IntroFragment extends Fragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+       //TODO:Init views
+        int position=getArguments().getInt("keyForPosition");
+        switch (position){
+
+            //TODO
+        }
 
 
 
+        //saveIsShown();
 
 
 
@@ -70,14 +72,18 @@ public class IntroFragment extends Fragment {
 
 
 
-    
-    
-    
 
 
 
 
 
 
+
+
+    private  void saveIsShown(){
+        SharedPreferences preferences=getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE);
+        preferences.edit().putBoolean("isShown",true).apply();
+
+    }
 
 }

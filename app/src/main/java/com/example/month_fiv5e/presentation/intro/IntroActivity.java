@@ -1,5 +1,7 @@
-package com.example.month_fiv5e.onBoard;
+package com.example.month_fiv5e.presentation.intro;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +18,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 
-import com.example.month_fiv5e.MainActivity;
+import com.example.month_fiv5e.presentation.Main.MainActivity;
 import com.example.month_fiv5e.R;
+import com.example.month_fiv5e.presentation.intro.IntroFragment;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -46,22 +49,27 @@ RelativeLayout color;
         buttonSkip.setVisibility(View.VISIBLE);
         ViewPagerScrolling();
 
-
+      //  saveIsShown();
     }public void next(View view) {
+
+      //  saveIsShown();
         if (viewPager.getCurrentItem() < 2) {
             viewPager.setCurrentItem(viewPager.getCurrentItem() +1, true);
         } else {
             startActivity(new Intent(this,MainActivity.class));
-            finish();
+          finish();
+
         }
 
     }public void skip(View view) {
+     //   saveIsShown();
+
         startActivity(new Intent(this, MainActivity.class));
-        finish();
+          finish();
 
 
     }public void ViewPagerScrolling() {
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -73,7 +81,7 @@ RelativeLayout color;
                         buttonSkip.setVisibility(View.VISIBLE);
                         buttonNext.setVisibility(View.VISIBLE);
                         buttonNext.setText("NEXT");
-
+                        color.setBackgroundColor(Color.YELLOW);
 
                         break;
                     case 1:
@@ -90,8 +98,7 @@ RelativeLayout color;
                 }
             }
 
-            @Override
-            public void onPageScrollStateChanged(int state) { }});}
+           });}
 
             class PagerAdapter extends FragmentPagerAdapter {
 
@@ -113,6 +120,14 @@ RelativeLayout color;
             return 3;
         }
     }
+
+    private  void saveIsShown(){
+        SharedPreferences preferences=IntroActivity.this.getSharedPreferences("settings", Context.MODE_PRIVATE);
+        preferences.edit().putBoolean("isShown",true).apply();
+
+    }
+
+
 }
 
 
